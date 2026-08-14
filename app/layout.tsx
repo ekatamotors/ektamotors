@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Ekata Motors | Official EKA Commercial Electric Vehicles Nepal",
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className="antialiased selection:bg-[#0382DA] selection:text-white">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

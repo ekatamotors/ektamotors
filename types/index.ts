@@ -27,10 +27,16 @@ export interface ColorOption {
 export interface Vehicle {
   id: string;
   name: string;
+  brandName: string;
   modelCode: string;
   tagline: string;
-  category: "SCV" | "BUS";
+  category: "SCV" | "BUS" | "TRUCK";
+  categoryName: string;
   categoryLabel: string;
+  shortDescription: string;
+  fullDescription: string;
+  image: string;
+  cockpitImage: string;
   badge: string;
   heroImage: string;
   galleryImages: string[];
@@ -52,7 +58,8 @@ export interface Vehicle {
   specifications: SpecCategory[];
   applications: ApplicationCase[];
   colors: ColorOption[];
-  highlights: string[];
+  heroStats: any[];
+  highlights: any[];
 }
 
 export interface CompanyInfo {

@@ -67,7 +67,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                   <div className="text-xs font-semibold text-slate-400">
                     {stat.label}
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  <div className="text-lg sm:text-xl font-black text-white tracking-tight">
                     {stat.value}
                   </div>
                 </div>
