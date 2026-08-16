@@ -140,23 +140,19 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               {/* Right Column Image Preview */}
               <div className="lg:col-span-7 bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl aspect-4/3 relative">
                 <img
-                  src={
-                    currentHighlight?.image ||
-                    vehicle.cockpitImage ||
-                    vehicle.image
-                  }
+                  src={vehicle.cockpitImage}
                   alt={currentHighlight?.title || "Highlight view"}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-6">
+                {/* <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-6">
                   <span className="text-xs font-bold text-[#0382DA] uppercase tracking-wider block">
                     {currentHighlight?.title}
                   </span>
                   <p className="text-sm font-semibold text-white">
                     Detailed Engineering View & Cabin Architecture
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -192,7 +188,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
           )}
 
         {/* Video Walkthrough Section */}
-        {vehicle.video && (
+        {/* {vehicle.video && (
           <div className="space-y-6 pt-6 max-w-6xl mx-auto">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
@@ -215,7 +211,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               />
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Fleet Inquiry & WhatsApp Banner */}
         <div className="bg-gradient-to-r from-[#0B1324] via-[#041B5F] to-[#0382DA]/30 rounded-3xl p-8 sm:p-12 border border-slate-700/80 shadow-2xl max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">

@@ -7,7 +7,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-const SITE_URL = "https://www.ekamotors.com.np"; // <-- swap in your real domain
+const SITE_URL = "https://www.ekamotors.com"; // <-- swap in your real domain
 
 // ---------------------------------------------------------------------------
 // Pre-render one static page per vehicle at build time

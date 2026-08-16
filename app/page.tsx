@@ -216,13 +216,13 @@ export default function HomePage() {
         initialMessage={whatsAppInitialMessage}
       />
 
-      <Footer
+      {/* <Footer
         onNavigate={(tab) => {
           setSelectedVehicle(null);
           setActiveTab(tab);
         }}
         onOpenWhatsApp={handleOpenWhatsApp}
-      />
+      /> */}
     </div>
   );
 }

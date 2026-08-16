@@ -58,6 +58,7 @@ export interface Vehicle {
   specifications: SpecCategory[];
   applications: ApplicationCase[];
   colors: ColorOption[];
+  detailedSpecsTable: any[];
   heroStats: any[];
   highlights: any[];
 }

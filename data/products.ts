@@ -34,10 +34,9 @@ export const PRODUCTS_DATA: Vehicle[] = [
     tagline: "Built for More: Delivering Heavy-Duty Logistics Sustainably",
     shortDescription:
       "EKA 55T offers unmatched efficiency and reliability. Designed for maximum impact, the EKA 55T can be paired with a range of trailers from flatbeds to tankers, for diverse cargo needs.",
-    fullDescription:
-      "The EKA 55T is a flagship heavy-duty electric tractor trailer engineered for heavy haulage, dry ports, cement transit, and interstate freight routes. Delivering a massive 2500 Nm peak torque and 400 kW peak power, it easily replaces legacy 55-tonne diesel prime movers with up to 75% fuel cost savings and zero tailpipe emissions.",
-    image: IMAGES.truck,
-    cockpitImage: cockpitCabinImg,
+    fullDescription: "",
+    image: "/images/trucks/55T_Banner.jpeg",
+    cockpitImage: "/images/trucks/EKA_T55.gif",
     galleryImages: [IMAGES.truck, truckChassisImg, cockpitCabinImg],
     heroStats: [
       { label: "Peak Power", value: "400 kW" },
@@ -217,8 +216,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "The EKA 7T redefines mid-range logistics with its smart design and sustainable performance. Built to handle demanding transport needs, it delivers efficiency and eco-consciousness in every delivery.",
     fullDescription: "",
-    image: IMAGES.truck,
-    cockpitImage: cockpitCabinImg,
+    image: "/images/trucks/7T_Banner.jpeg",
+    cockpitImage: "/images/trucks/EKA_7T.gif",
     galleryImages: [IMAGES.truck, cargoBoxImg],
     heroStats: [
       { label: "Peak Power", value: "200 kW" },
@@ -360,8 +359,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "Combining comfort, advanced technology, and eco-friendly performance, the EKA Coach is a smart, zero-tailpipe emission bus designed for luxurious long-distance travel, ensuring a smooth and eco-friendly ride.",
     fullDescription: "",
-    image: IMAGES.bus,
-    cockpitImage: IMAGES.bus,
+    image: "/images/buses/Coach_Road-copy-scaled.jpeg",
+    cockpitImage: "/images/buses/Coach_EKA-Front-1024x1024.jpg",
     galleryImages: [IMAGES.bus, IMAGES.bus],
     heroStats: [
       { label: "Max Power", value: "339 kW" },
@@ -510,8 +509,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "With spacious interiors, smooth ride quality, and flexible design, the EKA LF is a zero tailpipe-emission low-floor bus designed for easy accessibility and efficient mobility in specialised environments.",
     fullDescription: "",
-    image: IMAGES.bus,
-    cockpitImage: IMAGES.bus,
+    image: "/images/buses/EKA-Products_Page-02-scaled-1.jpeg",
+    cockpitImage: "/images/buses/EKA_LF.gif",
     galleryImages: [IMAGES.bus, IMAGES.bus],
     heroStats: [
       { label: "Max Power", value: "160 kW" },
@@ -658,8 +657,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "Featuring zero-emission technology, spacious interiors, and reliable performance, the EKA 12M redefines Environment Conscious commutes with its blend of comfort and efficiency.",
     fullDescription: "",
-    image: IMAGES.bus,
-    cockpitImage: IMAGES.bus,
+    image: "/images/buses/EKA-Products_Page-08-scaled-1.jpg",
+    cockpitImage: "/images/buses/EKA_12M.gif",
     galleryImages: [IMAGES.bus, IMAGES.bus],
     heroStats: [
       { label: "Max Power", value: "240 kW" },
@@ -800,8 +799,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "EKA 9M combines comfort, efficiency, and sustainability, featuring spacious interiors, optimal ergonomics, and zero-tailpipe emissions for a cleaner, more comfortable city commute.",
     fullDescription: "",
-    image: IMAGES.bus,
-    cockpitImage: IMAGES.bus,
+    image: "/images/buses/EKA-Products_Page-05-scaled-1.jpg",
+    cockpitImage: "/images/buses/EKA_9M.gif",
     galleryImages: [IMAGES.bus, IMAGES.bus],
     heroStats: [
       { label: "Max Power", value: "213 kW" },
@@ -943,8 +942,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "EKA 7M is an agile, zero-tailpipe emission bus designed for efficient transits, perfect for narrow lanes, hilly terrain, and feeder routes. EKA 7M offers reliable performance and maximised efficiency over short-distance commutes.",
     fullDescription: "",
-    image: IMAGES.van,
-    cockpitImage: IMAGES.bus,
+    image: "/images/buses/7M_Bus_raod.jpeg",
+    cockpitImage: "/images/buses/EKA_7M.gif",
     galleryImages: [IMAGES.van, IMAGES.bus],
     heroStats: [
       { label: "Max Power", value: "124 kW" },
@@ -1072,8 +1071,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "EKA 1.5T is a zero-tailpipe emission vehicle designed for mid-mile urban logistics. EKA 1.5T combines reliable performance with sustainability, offering an efficient solution for diverse transportation needs.",
     fullDescription: "",
-    image: IMAGES.van,
-    cockpitImage: cockpitCabinImg,
+    image: "/images/scv/1.5_EKA_SIde-2.jpg",
+    cockpitImage: "/images/scv/1.5T.gif",
     galleryImages: [IMAGES.van, cargoBoxImg],
     heroStats: [
       { label: "Peak Power", value: "60 kW" },
@@ -1207,8 +1206,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "EKA 1700K is a nimble, zero-tailpipe emission three-wheeled vehicle designed for last-mile urban logistics. EKA 1700K delivers efficient, eco-friendly performance, making it ideal for light transport needs.",
     fullDescription: "",
-    image: scvThreeWheelImg,
-    cockpitImage: scvThreeWheelImg,
+    image: "/images/scv/1700k_EKA_Fornt.jpg",
+    cockpitImage: "/images/scv/EKA-3W-Cargo.gif",
     galleryImages: [scvThreeWheelImg, cargoBoxImg],
     heroStats: [
       { label: "Peak Power", value: "15 kW" },
@@ -1348,8 +1347,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "The EKA 6S is a versatile, zero-emission 3-wheeler built for seamless last-mile connectivity. It combines comfort, reliability and efficiency, offering smarter, value-conscious short-distance commutes.",
     fullDescription: "",
-    image: IMAGES.van,
-    cockpitImage: IMAGES.van,
+    image: "/images/scv/6S_Banner-image-1.jpeg",
+    cockpitImage: "/images/scv/EKA_6S-1.gif",
     galleryImages: [IMAGES.van, busInteriorImg],
     heroStats: [
       { label: "Peak Power", value: "10 kW" },
@@ -1491,8 +1490,8 @@ export const PRODUCTS_DATA: Vehicle[] = [
     shortDescription:
       "EKA 3S is a light passenger three-wheeler designed for efficient & hassle-free city mobility. EKA 3S offers a comfortable, eco-friendly, and reliable solution for quick commutes.",
     fullDescription: "",
-    image: IMAGES.van,
-    cockpitImage: cockpitCabinImg,
+    image: "/images/scv/3S_Banner.jpg",
+    cockpitImage: "/images/scv/EKA_3S.gif",
     galleryImages: [IMAGES.van, scvThreeWheelImg],
     heroStats: [
       { label: "Peak Power", value: "10 kW" },
