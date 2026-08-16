@@ -30,7 +30,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
     vehicle.highlights[0];
 
   return (
-    <div className="bg-[#060A12] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8 space-y-16 selection:bg-[#0382DA] selection:text-white font-sans">
+    <div className="bg-[#F5F8FB] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8 space-y-16 selection:bg-[#0382DA] selection:text-white font-sans">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Back Button */}
         <button
@@ -47,15 +47,15 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             <span>EKA Mobility Commercial Lineup</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight uppercase">
+          <h1 className="text-4xl sm:text-6xl font-black text-[#041B5F] tracking-tight uppercase">
             {vehicle.name}
           </h1>
 
-          <p className="text-lg sm:text-2xl font-extrabold text-slate-100">
+          <p className="text-lg sm:text-2xl font-extrabold  text-[#041B5F]">
             {vehicle.tagline}
           </p>
 
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-3xl mx-auto ">
             {vehicle.shortDescription || vehicle.fullDescription}
           </p>
 
@@ -64,10 +64,10 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
             <div className="pt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 border-t border-slate-800/80 mt-8">
               {vehicle.heroStats.map((stat, idx) => (
                 <div key={idx} className="space-y-1 text-center">
-                  <div className="text-xs font-semibold text-slate-400">
+                  <div className="text-xs font-semibold text-[#041B5F]">
                     {stat.label}
                   </div>
-                  <div className="text-lg sm:text-xl font-black text-white tracking-tight">
+                  <div className="text-lg sm:text-xl font-black text-slate-600 tracking-tight">
                     {stat.value}
                   </div>
                 </div>
@@ -77,7 +77,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         </div>
 
         {/* Main Vehicle Hero Image Banner */}
-        <div className="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900/40 relative group max-w-6xl mx-auto">
+        <div className="rounded-3xl overflow-hidden  shadow-2xl bg-slate-900/40 relative group max-w-6xl mx-auto">
           <img
             src={vehicle.image}
             alt={vehicle.name}
@@ -90,8 +90,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         {/* Product Highlights Section matching Image 2 */}
         {vehicle.highlights && vehicle.highlights.length > 0 && (
           <div className="space-y-8 pt-6 max-w-6xl mx-auto">
-            <div className="flex items-center gap-2 text-2xl sm:text-3xl font-black text-white">
-              <span className="text-[#0382DA] font-mono text-xl">↳</span>
+            <div className="flex items-center gap-2 text-2xl sm:text-3xl font-black text-[#041B5F]">
+              <span className="text-[#041B5F] font-mono text-xl">↳</span>
               <h2>Product Highlights</h2>
             </div>
 
@@ -106,8 +106,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                       onClick={() => setActiveHighlightId(item.id)}
                       className={`p-5 rounded-2xl border transition-all cursor-pointer ${
                         isActive
-                          ? "bg-[#0B1324] border-[#0382DA] shadow-lg shadow-blue-950/40"
-                          : "bg-slate-950/60 border-slate-800/80 hover:bg-slate-900/60 hover:border-slate-700"
+                          ? "bg-[#041B5F] shadow-lg shadow-blue-950/40"
+                          : "bg-[#041B5F] border-slate-800/80 hover:bg-[#031548] hover:border-slate-700"
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -138,7 +138,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </div>
 
               {/* Right Column Image Preview */}
-              <div className="lg:col-span-7 bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl aspect-4/3 relative">
+              <div className="lg:col-span-7 bg-slate-950 rounded-2xl  overflow-hidden shadow-2xl aspect-4/3 relative">
                 <img
                   src={vehicle.cockpitImage}
                   alt={currentHighlight?.title || "Highlight view"}
@@ -162,8 +162,8 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         {vehicle.detailedSpecsTable &&
           vehicle.detailedSpecsTable.length > 0 && (
             <div className="space-y-8 pt-8 max-w-6xl mx-auto">
-              <div className="flex items-center gap-2 text-2xl sm:text-3xl font-black text-white">
-                <span className="text-[#0382DA] font-mono text-xl">↳</span>
+              <div className="flex items-center gap-2 text-2xl sm:text-3xl font-black text-[#041B5F]">
+                <span className="text-[#041B5F] font-mono text-xl">↳</span>
                 <h2>Detailed Specifications</h2>
               </div>
 
@@ -214,7 +214,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
         )} */}
 
         {/* Fleet Inquiry & WhatsApp Banner */}
-        <div className="bg-gradient-to-r from-[#0B1324] via-[#041B5F] to-[#0382DA]/30 rounded-3xl p-8 sm:p-12 border border-slate-700/80 shadow-2xl max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="bg-gradient-to-r from-[#0B1324] via-[#041B5F] to-[#0382DA]/30 rounded-3xl p-8 sm:p-12  shadow-2xl max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 bg-[#31BA58]/20 border border-[#31BA58]/40 text-[#31BA58] text-xs font-bold uppercase px-3 py-1 rounded-full">
               <span>Direct Fleet Assistance</span>
