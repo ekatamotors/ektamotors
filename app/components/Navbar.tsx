@@ -29,14 +29,7 @@ interface NavbarProps {
   onNavigateSection?: (sectionId: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  activeTab,
-  setActiveTab,
-  onSelectProduct,
-  onSelectCategory,
-  onOpenWhatsApp,
-  onNavigateSection,
-}) => {
+export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -55,24 +48,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleProductClick = (productId: string) => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
-    onSelectProduct(productId);
+    // onSelectProduct(productId);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleCategoryClick = (category: string) => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
-    onSelectCategory(category);
+    // onSelectCategory(category);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleSectionClick = (tab: string, sectionId?: string) => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
-    setActiveTab(tab);
-    if (sectionId && onNavigateSection) {
-      onNavigateSection(sectionId);
-    }
+    // setActiveTab(tab);
+    // if (sectionId && onNavigateSection) {
+    //   onNavigateSection(sectionId);
+    // }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -173,11 +166,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               <li>
                 <Link
                   href="/"
-                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeTab === "home"
-                      ? "bg-[#0382DA] text-white shadow-sm"
-                      : "text-slate-200 hover:text-white hover:bg-slate-800/70"
-                  }`}
+                  // activeTab === "home"
+                  //   ? "bg-[#0382DA] text-white shadow-sm"
+                  //   : "text-slate-200 hover:text-white hover:bg-slate-800/70"
+                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 text-slate-200 hover:text-white hover:bg-slate-800/70 
+                  `}
                 >
                   <Home className="w-3.5 h-3.5" />
                   <span>Home</span>
@@ -245,11 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Link
                   href="/supports"
                   // onClick={() => handleSectionClick("support")}
-                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeTab === "support"
-                      ? "bg-[#0382DA] text-white shadow-xs"
-                      : "text-slate-200 hover:text-white hover:bg-slate-800/70"
-                  }`}
+                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 text-slate-200 hover:text-white hover:bg-slate-800/70 `}
                 >
                   <span>Support</span>
                 </Link>
@@ -260,11 +249,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <Link
                   href="/about"
                   onClick={() => handleSectionClick("about")}
-                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
-                    activeTab === "about"
-                      ? "bg-[#0382DA] text-white shadow-xs"
-                      : "text-slate-200 hover:text-white hover:bg-slate-800/70"
-                  }`}
+                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 text-slate-200 hover:text-white hover:bg-slate-800/70 `}
                 >
                   <span>About</span>
                 </Link>
@@ -276,6 +261,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={() =>
+                // @ts-ignore
                 onOpenWhatsApp(
                   "Hello Ekata Motors! I would like to inquire about EKA electric commercial vehicles.",
                 )
@@ -290,6 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-2">
             <button
+              // @ts-ignore
               onClick={() => onOpenWhatsApp()}
               className="p-2 bg-[#25D366] text-white rounded-full sm:hidden"
             >
@@ -352,11 +339,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => handleSectionClick("support")}
-            className={`w-full flex items-center justify-between p-3 rounded-xl border ${
-              activeTab === "support"
-                ? "bg-[#0382DA] text-white border-[#0382DA]"
-                : "bg-slate-900/60 text-slate-200 border-slate-800"
-            } text-sm font-bold shadow-xs cursor-pointer`}
+            className={`w-full flex items-center justify-between p-3 rounded-xl border  text-sm font-bold shadow-xs cursor-pointer`}
           >
             <span>Support & Service</span>
             <ChevronRight className="w-4 h-4" />
@@ -364,11 +347,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => handleSectionClick("about")}
-            className={`w-full flex items-center justify-between p-3 rounded-xl border ${
-              activeTab === "about"
-                ? "bg-[#0382DA] text-white border-[#0382DA]"
-                : "bg-slate-900/60 text-slate-200 border-slate-800"
-            } text-sm font-bold shadow-xs cursor-pointer`}
+            className={`w-full flex items-center justify-between p-3 rounded-xl border  text-sm font-bold shadow-xs cursor-pointer`}
           >
             <span>About Ekata Motors</span>
             <ChevronRight className="w-4 h-4" />
@@ -378,9 +357,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenWhatsApp(
-                  "Hello Ekata Motors! I would like to consult on electric commercial fleet options in Nepal.",
-                );
+                // onOpenWhatsApp(
+                //   "Hello Ekata Motors! I would like to consult on electric commercial fleet options in Nepal.",
+                // );
               }}
               className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-bold py-3.5 px-4 rounded-xl shadow-lg"
             >

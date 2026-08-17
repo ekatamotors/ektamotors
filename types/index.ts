@@ -61,6 +61,11 @@ export interface Vehicle {
   detailedSpecsTable: any[];
   heroStats: any[];
   highlights: any[];
+  keySpecs: any;
+  warrantyYears: number;
+  economics: any;
+  video: any;
+  warrantyKm: number;
 }
 
 export interface CompanyInfo {
