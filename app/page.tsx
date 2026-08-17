@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { Vehicle } from "@/types";
 import HeroSection from "./components/Hero";
+import FleetCategoriesSection from "./components/Fleetcategoriessection";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<string>("home");
@@ -89,6 +90,7 @@ export default function HomePage() {
               }}
               onOpenWhatsApp={handleOpenWhatsApp}
             />
+            <FleetCategoriesSection />
 
             {/* Commercial Fleet Section */}
             {/* <section
