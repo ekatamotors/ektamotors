@@ -68,13 +68,13 @@ export default function HeroSection({
 
           {/* Action Buttons */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button
+            {/* <button
               onClick={onExploreClick}
               className="inline-flex items-center gap-2 bg-white hover:bg-[#F2F6FA] text-[#041B5F] font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer group"
             >
               <span>Explore Electric Fleet</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </button> */}
 
             <button
               onClick={() =>

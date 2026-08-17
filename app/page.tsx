@@ -156,7 +156,7 @@ export default function HomePage() {
 
             <ServiceEcosystem onOpenWhatsApp={handleOpenWhatsApp} />
             <AboutSection onOpenWhatsApp={handleOpenWhatsApp} />
-            <MediaSection onOpenWhatsApp={handleOpenWhatsApp} />
+            {/* <MediaSection onOpenWhatsApp={handleOpenWhatsApp} /> */}
             <ContactSection onOpenWhatsApp={handleOpenWhatsApp} />
           </div>
         )}
