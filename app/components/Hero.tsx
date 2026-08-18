@@ -36,7 +36,9 @@ export default function HeroSection({
           {/* Top Eyebrow Tag */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white">
             <span className="w-2 h-2 rounded-full bg-[#31BA58] animate-pulse"></span>
-            <span className="text-[#5FD3F3] font-bold">EKATA MOTORS</span>
+            <span className="text-[#5FD3F3] font-bold text-xs">
+              EKATA MOTORS
+            </span>
             <span className="text-white/30">•</span>
             <span className="text-white/80">
               Official & Exclusive Distributor of EKA Mobility

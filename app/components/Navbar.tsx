@@ -308,8 +308,9 @@ export const Navbar = () => {
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#0B1120] border-b border-slate-800 px-4 pt-3 pb-8 space-y-4 max-h-[85vh] overflow-y-auto">
-          <button
-            onClick={() => handleSectionClick("home")}
+          <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
             className="w-full flex items-center justify-between p-3 rounded-xl bg-[#0382DA] text-white text-sm font-bold shadow-md"
           >
             <div className="flex items-center gap-2">
@@ -317,7 +318,7 @@ export const Navbar = () => {
               <span>Home Overview</span>
             </div>
             <ChevronRight className="w-4 h-4" />
-          </button>
+          </Link>
 
           {menuCategories.map((cat) => (
             <div
@@ -332,48 +333,47 @@ export const Navbar = () => {
               </div>
               <div className="space-y-1 pt-1">
                 {cat.items.map((item) => (
-                  <button
+                  <Link
+                    href={`/portfolio/${item.id}`}
                     key={item.id}
                     onClick={() => handleProductClick(item.id)}
                     className="w-full text-left px-3 py-2 rounded-xl text-xs font-medium text-slate-200 hover:bg-slate-800 flex items-center justify-between cursor-pointer"
                   >
                     <span>{item.label}</span>
                     <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
-                  </button>
+                  </Link>
                 ))}
               </div>
             </div>
           ))}
 
-          <button
-            onClick={() => handleSectionClick("support")}
+          <Link
+            href="/supports"
+            onClick={() => setMobileMenuOpen(false)}
             className={`w-full flex items-center justify-between p-3 rounded-xl border  text-sm font-bold shadow-xs cursor-pointer`}
           >
             <span>Support & Service</span>
             <ChevronRight className="w-4 h-4" />
-          </button>
+          </Link>
 
-          <button
-            onClick={() => handleSectionClick("about")}
+          <Link
+            href="/about"
+            onClick={() => setMobileMenuOpen(false)}
             className={`w-full flex items-center justify-between p-3 rounded-xl border  text-sm font-bold shadow-xs cursor-pointer`}
           >
             <span>About Ekata Motors</span>
             <ChevronRight className="w-4 h-4" />
-          </button>
+          </Link>
 
           <div className="pt-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openWhatsApp(
-                  "Hello Ekata Motors! I would like to consult on electric commercial fleet options in Nepal.",
-                );
-              }}
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-bold py-3.5 px-4 rounded-xl shadow-lg"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
               <span>Connect on WhatsApp</span>
-            </button>
+            </Link>
           </div>
         </div>
       )}

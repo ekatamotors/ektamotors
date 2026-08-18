@@ -53,12 +53,12 @@ export default function FleetCategoriesSection() {
       {CATEGORIES.map((category, index) => (
         <div
           key={category.id}
-          className="sticky top-16 lg:top-20 h-[88vh] lg:h-screen first:h-[calc(88vh-1px)]"
+          className="sticky top-16 lg:top-20 h-[52vh] sm:h-[65vh] lg:h-screen first:h-[calc(52vh-1px)] sm:first:h-[calc(65vh-1px)] lg:first:h-[calc(100vh-1px)]"
           style={{ zIndex: index + 1 }}
         >
           <a
             href={category.href}
-            className="group relative block h-full w-full overflow-hidden rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.45)] focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
+            className="group relative block h-full w-full overflow-hidden rounded-t-[1.5rem] lg:rounded-t-[2.5rem] shadow-[0_-20px_60px_rgba(0,0,0,0.45)] focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
           >
             {/* Category banner photo */}
             <img
@@ -68,40 +68,34 @@ export default function FleetCategoriesSection() {
             />
 
             {/* Bottom scrim for tagline legibility */}
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#040E2A] via-[#040E2A]/55 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-1/2 sm:h-2/5 bg-gradient-to-t from-[#040E2A] via-[#040E2A]/55 to-transparent" />
             {/* Faint top scrim so the title reads over bright sky photos */}
             <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black/35 to-transparent" />
 
-            {/* Sequence marker */}
-            {/* <span className="absolute top-6 left-6 lg:top-8 lg:left-8 text-xs font-bold tracking-widest text-white/60">
-              {String(index + 1).padStart(2, "0")} /{" "}
-              {String(CATEGORIES.length).padStart(2, "0")}
-            </span> */}
-
             {/* Title */}
-            <div className="absolute inset-x-0 top-[14%] flex justify-center px-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.45)]">
+            <div className="absolute inset-x-0 top-[8%] sm:top-[12%] lg:top-[14%] flex justify-center px-4">
+              <h2 className="text-xl sm:text-3xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.45)]">
                 {category.title}
               </h2>
             </div>
 
             {/* Tagline + description, revealed clearly at rest, CTA appears on hover */}
-            <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-3 px-6 pb-10 lg:pb-14 text-center">
-              <div className="space-y-1">
-                <p className="text-base sm:text-lg font-bold text-white">
+            <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-1.5 sm:gap-3 px-4 sm:px-6 pb-5 sm:pb-10 lg:pb-14 text-center">
+              <div className="space-y-0.5 sm:space-y-1">
+                <p className="text-xs sm:text-base lg:text-lg font-bold text-white">
                   {category.tagline}
                 </p>
-                <p className="text-sm sm:text-base text-white/70 max-w-md mx-auto">
+                <p className="hidden sm:block text-sm lg:text-base text-white/70 max-w-md mx-auto">
                   {category.description}
                 </p>
               </div>
 
               <span
-                className="inline-flex items-center gap-1.5 text-sm font-bold opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 transition-all duration-300 lg:group-hover:opacity-100 lg:group-hover:translate-y-0"
                 style={{ color: category.accent }}
               >
                 Explore {category.title}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </div>
           </a>
