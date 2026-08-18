@@ -13,10 +13,8 @@ const COMPANY_INFO = {
 };
 
 export default function HeroSection({
-  onExploreClick,
   onOpenWhatsApp,
 }: {
-  onExploreClick: () => void;
   onOpenWhatsApp: (msg: string) => void;
 }) {
   return (

@@ -19,7 +19,7 @@ const CATEGORIES: FleetCategory[] = [
     description:
       "Zero-emission buses built for city routes and highway comfort alike.",
     image: "/images/fleet/Eka-Website-Banners_Buses.jpg",
-    href: "/buses",
+    href: "/portfolio/eka-buses",
     accent: "#5FD3F3",
   },
   {
@@ -29,7 +29,7 @@ const CATEGORIES: FleetCategory[] = [
     description:
       "Clean energy solutions for heavy-duty logistics and diverse applications.",
     image: "/images/fleet/Eka-Website-Banners-02-scaled-1.jpeg",
-    href: "/trucks",
+    href: "/portfolio/eka-trucks",
     accent: "#4FE0B5",
   },
   {
@@ -39,7 +39,7 @@ const CATEGORIES: FleetCategory[] = [
     description:
       "Reliable performance for last-mile deliveries & urban transport.",
     image: "/images/fleet/Eka-Website-Banners_SCV.jpeg",
-    href: "/scvs",
+    href: "/portfolio/eka-scvs",
     accent: "#31BA58",
   },
 ];
@@ -73,10 +73,10 @@ export default function FleetCategoriesSection() {
             <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-black/35 to-transparent" />
 
             {/* Sequence marker */}
-            <span className="absolute top-6 left-6 lg:top-8 lg:left-8 text-xs font-bold tracking-widest text-white/60">
+            {/* <span className="absolute top-6 left-6 lg:top-8 lg:left-8 text-xs font-bold tracking-widest text-white/60">
               {String(index + 1).padStart(2, "0")} /{" "}
               {String(CATEGORIES.length).padStart(2, "0")}
-            </span>
+            </span> */}
 
             {/* Title */}
             <div className="absolute inset-x-0 top-[14%] flex justify-center px-4">

@@ -10,6 +10,8 @@ import {
 } from "lucide-react";
 import { COMPANY_INFO } from "@/data/products";
 import { EkataMotorsLogo } from "./EkataMotorsLogo";
+import { useWhatsAppContext } from "@/context/WhatsAppContext";
+import Link from "next/link";
 
 interface FooterProps {
   onNavigate: (tab: string) => void;
@@ -25,6 +27,8 @@ export const Footer = () =>
     const scrollToTop = () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
+
+    const { openWhatsApp } = useWhatsAppContext();
 
     return (
       <footer className="bg-[#041B5F] text-white pt-12 pb-6 relative overflow-hidden">
@@ -55,11 +59,11 @@ export const Footer = () =>
 
               <div className="pt-2">
                 <button
-                  // onClick={() =>
-                  //   onOpenWhatsApp(
-                  //     "Hello Ekata Motors! I am contacting you via website footer.",
-                  //   )
-                  // }
+                  onClick={() =>
+                    openWhatsApp(
+                      "Hello Ekata Motors! I am contacting you via website footer.",
+                    )
+                  }
                   className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4 fill-current" />
@@ -69,7 +73,7 @@ export const Footer = () =>
             </div>
 
             {/* Quick Navigation Links */}
-            <div className="space-y-3">
+            {/* <div className="space-y-3">
               <h4 className="font-bold text-white text-sm border-b border-white/10 pb-2">
                 Electric Fleet
               </h4>
@@ -130,7 +134,7 @@ export const Footer = () =>
                   </button>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* Quick Tools & About */}
             <div className="space-y-3">
@@ -139,35 +143,23 @@ export const Footer = () =>
               </h4>
               <ul className="space-y-2 text-slate-300">
                 <li>
-                  <button
-                    onClick={() => {
-                      // onNavigate("support");
-                      scrollToTop();
-                    }}
+                  <Link
+                    href="/supports"
                     className="hover:text-white transition-colors cursor-pointer"
                   >
                     Support & Service Readiness
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    onClick={() => {
-                      // onNavigate("about");
-                      scrollToTop();
-                    }}
+                  <Link
+                    href="/about"
                     className="hover:text-white transition-colors cursor-pointer"
                   >
                     About Ekata Motors
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    onClick={() => {
-                      //onNavigate("contact");
-                      scrollToTop();
-                    }}
-                    className="hover:text-white transition-colors cursor-pointer"
-                  >
+                  <button className="hover:text-white transition-colors cursor-pointer">
                     Contact & Location
                   </button>
                 </li>

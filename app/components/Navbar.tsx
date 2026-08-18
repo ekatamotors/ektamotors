@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import {
   MessageCircle,
   Menu,
@@ -7,32 +7,37 @@ import {
   ChevronDown,
   ChevronRight,
   Phone,
-  Truck,
-  Bus,
-  Car,
-  Info,
-  Newspaper,
-  Handshake,
   Home,
 } from "lucide-react";
-import { COMPANY_INFO, PRODUCTS_DATA } from "@/data/products";
-import { Vehicle } from "@/types";
+import { COMPANY_INFO } from "@/data/products";
 import { EkataMotorsLogo } from "./EkataMotorsLogo";
 import Link from "next/link";
-
-interface NavbarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-  onSelectProduct: (vehicleId: string) => void;
-  onSelectCategory: (category: string) => void;
-  onOpenWhatsApp: (customMessage?: string) => void;
-  onNavigateSection?: (sectionId: string) => void;
-}
+import { useWhatsAppContext } from "@/context/WhatsAppContext";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const { openWhatsApp } = useWhatsAppContext();
+  const pathname = usePathname();
+  // Helpers to determine active state
+  const isHomeActive = pathname === "/";
+  const isSupportActive = pathname?.startsWith("/supports");
+  const isAboutActive = pathname?.startsWith("/about");
+
+  // A category is active if we're on its own portfolio page OR on any child product's page
+  const isCategoryActive = (cat: (typeof menuCategories)[number]) => {
+    if (pathname === `/portfolio/${cat.categorySlug}`) return true;
+    return cat.items.some((item) => pathname === `/portfolio/${item.id}`);
+  };
+
+  const navLinkClasses = (active: boolean) =>
+    `px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 ${
+      active
+        ? "bg-[#0382DA] text-white shadow-sm"
+        : "text-slate-200 hover:text-white hover:bg-slate-800/70"
+    }`;
 
   const handleMouseEnter = (menuKey: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -62,10 +67,6 @@ export const Navbar = () => {
   const handleSectionClick = (tab: string, sectionId?: string) => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
-    // setActiveTab(tab);
-    // if (sectionId && onNavigateSection) {
-    //   onNavigateSection(sectionId);
-    // }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -74,7 +75,7 @@ export const Navbar = () => {
     {
       key: "trucks",
       label: "Trucks",
-      categorySlug: "trucks",
+      categorySlug: "eka-trucks",
       items: [
         { id: "eka-55t", label: "EKA 55T", badge: "Heavy Duty 55T" },
         { id: "eka-7t", label: "EKA 7T", badge: "Cargo Truck" },
@@ -83,7 +84,7 @@ export const Navbar = () => {
     {
       key: "buses",
       label: "Buses",
-      categorySlug: "buses",
+      categorySlug: "eka-buses",
       items: [
         { id: "eka-coach", label: "EKA Coach", badge: "Highway Coach" },
         { id: "eka-lf", label: "EKA LF", badge: "Low Floor Transit" },
@@ -95,7 +96,7 @@ export const Navbar = () => {
     {
       key: "scvs",
       label: "SCVs",
-      categorySlug: "scvs",
+      categorySlug: "eka-scvs",
       items: [
         { id: "eka-1-5t", label: "EKA 1.5T", badge: "1.5T Delivery" },
         { id: "eka-3w-cargo", label: "EKA 3W Cargo", badge: "3-Wheeler Heavy" },
@@ -164,14 +165,7 @@ export const Navbar = () => {
             >
               {/* Home */}
               <li>
-                <Link
-                  href="/"
-                  // activeTab === "home"
-                  //   ? "bg-[#0382DA] text-white shadow-sm"
-                  //   : "text-slate-200 hover:text-white hover:bg-slate-800/70"
-                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 text-slate-200 hover:text-white hover:bg-slate-800/70 
-                  `}
-                >
+                <Link href="/" className={navLinkClasses(isHomeActive)}>
                   <Home className="w-3.5 h-3.5" />
                   <span>Home</span>
                 </Link>
@@ -180,6 +174,7 @@ export const Navbar = () => {
               {/* Dynamic Dropdown Categories from Website Menu */}
               {menuCategories.map((cat) => {
                 const isOpen = activeDropdown === cat.key;
+                const active = isCategoryActive(cat);
                 return (
                   <li
                     key={cat.key}
@@ -187,21 +182,29 @@ export const Navbar = () => {
                     onMouseEnter={() => handleMouseEnter(cat.key)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <button
-                      onClick={() => handleCategoryClick(cat.categorySlug)}
+                    <Link
+                      href={`/portfolio/${cat.categorySlug}`}
+                      onClick={() => setActiveDropdown(null)}
                       className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1 ${
-                        isOpen
-                          ? "bg-slate-800 text-[#0382DA]"
-                          : "text-slate-200 hover:text-white hover:bg-slate-800/70"
+                        active
+                          ? "bg-[#0382DA] text-white shadow-sm"
+                          : isOpen
+                            ? "bg-slate-800 text-[#0382DA]"
+                            : "text-slate-200 hover:text-white hover:bg-slate-800/70"
                       }`}
                     >
                       <span>{cat.label}</span>
                       <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180 text-[#0382DA]" : "text-slate-400"}`}
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isOpen
+                            ? "rotate-180 text-white"
+                            : active
+                              ? "text-white"
+                              : "text-slate-400"
+                        }`}
                       />
-                    </button>
+                    </Link>
 
-                    {/* Submenu Dropdown */}
                     {isOpen && (
                       <div className="absolute top-full left-0 mt-2 w-60 bg-[#0B1120] border border-slate-700/80 rounded-2xl shadow-2xl p-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                         <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1 border-b border-slate-800 mb-1 flex items-center justify-between">
@@ -209,24 +212,32 @@ export const Navbar = () => {
                           <span className="text-[#0382DA]">• EKA</span>
                         </div>
                         <ul className="space-y-0.5">
-                          {cat.items.map((item) => (
-                            <li key={item.id}>
-                              <Link
-                                href={`/portfolio/${item.id}`}
-                                // onClick={() => handleProductClick(item.id)}
-                                className="w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium text-slate-200 hover:text-white hover:bg-[#0382DA]/20 hover:border-l-2 hover:border-[#0382DA] transition-all flex items-center justify-between group cursor-pointer"
-                              >
-                                <span className="font-semibold group-hover:translate-x-0.5 transition-transform">
-                                  {item.label}
-                                </span>
-                                {"badge" in item && item.badge && (
-                                  <span className="text-[9px] font-bold bg-slate-800 text-cyan-300 px-2 py-0.5 rounded-md border border-slate-700/60">
-                                    {item.badge}
+                          {cat.items.map((item) => {
+                            const itemActive =
+                              pathname === `/portfolio/${item.id}`;
+                            return (
+                              <li key={item.id}>
+                                <Link
+                                  href={`/portfolio/${item.id}`}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-medium transition-all flex items-center justify-between group cursor-pointer ${
+                                    itemActive
+                                      ? "bg-[#0382DA]/20 border-l-2 border-[#0382DA] text-white"
+                                      : "text-slate-200 hover:text-white hover:bg-[#0382DA]/20 hover:border-l-2 hover:border-[#0382DA]"
+                                  }`}
+                                >
+                                  <span className="font-semibold group-hover:translate-x-0.5 transition-transform">
+                                    {item.label}
                                   </span>
-                                )}
-                              </Link>
-                            </li>
-                          ))}
+                                  {item.badge && (
+                                    <span className="text-[9px] font-bold bg-slate-800 text-cyan-300 px-2 py-0.5 rounded-md border border-slate-700/60">
+                                      {item.badge}
+                                    </span>
+                                  )}
+                                </Link>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     )}
@@ -237,8 +248,7 @@ export const Navbar = () => {
               <li>
                 <Link
                   href="/supports"
-                  // onClick={() => handleSectionClick("support")}
-                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 text-slate-200 hover:text-white hover:bg-slate-800/70 `}
+                  className={navLinkClasses(isSupportActive)}
                 >
                   <span>Support</span>
                 </Link>
@@ -246,11 +256,7 @@ export const Navbar = () => {
 
               {/* About */}
               <li>
-                <Link
-                  href="/about"
-                  onClick={() => handleSectionClick("about")}
-                  className={`px-3.5 py-2 rounded-full transition-all cursor-pointer flex items-center gap-1.5 text-slate-200 hover:text-white hover:bg-slate-800/70 `}
-                >
+                <Link href="/about" className={navLinkClasses(isAboutActive)}>
                   <span>About</span>
                 </Link>
               </li>
@@ -261,8 +267,7 @@ export const Navbar = () => {
           <div className="hidden sm:flex items-center gap-3">
             <button
               onClick={() =>
-                // @ts-ignore
-                onOpenWhatsApp(
+                openWhatsApp(
                   "Hello Ekata Motors! I would like to inquire about EKA electric commercial vehicles.",
                 )
               }
@@ -276,8 +281,11 @@ export const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-2">
             <button
-              // @ts-ignore
-              onClick={() => onOpenWhatsApp()}
+              onClick={() =>
+                openWhatsApp(
+                  "Hello Ekata Motors! I would like to inquire about EKA electric commercial vehicles.",
+                )
+              }
               className="p-2 bg-[#25D366] text-white rounded-full sm:hidden"
             >
               <MessageCircle className="w-5 h-5 fill-current" />
@@ -357,9 +365,9 @@ export const Navbar = () => {
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                // onOpenWhatsApp(
-                //   "Hello Ekata Motors! I would like to consult on electric commercial fleet options in Nepal.",
-                // );
+                openWhatsApp(
+                  "Hello Ekata Motors! I would like to consult on electric commercial fleet options in Nepal.",
+                );
               }}
               className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-bold py-3.5 px-4 rounded-xl shadow-lg"
             >
