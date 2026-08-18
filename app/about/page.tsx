@@ -179,7 +179,7 @@ const page: React.FC<AboutSectionProps> = ({ onOpenWhatsApp, onNavigate }) => {
       </section>
 
       {/* Brand Architecture */}
-      <section className="bg-[#F5F8FB] py-16 sm:py-20 border-b border-slate-200/80">
+      {/* <section className="bg-[#F5F8FB] py-16 sm:py-20 border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-3">
             <div className="text-xs font-bold uppercase tracking-wider text-[#0382DA]">
@@ -234,10 +234,10 @@ const page: React.FC<AboutSectionProps> = ({ onOpenWhatsApp, onNavigate }) => {
             follow manufacturer-approved nomenclature exactly.
           </p>
         </div>
-      </section>
+      </section> */}
 
       {/* Positioning */}
-      <section className="bg-white py-16 sm:py-20">
+      {/* <section className="bg-white py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
             <div className="space-y-3">
@@ -287,7 +287,7 @@ const page: React.FC<AboutSectionProps> = ({ onOpenWhatsApp, onNavigate }) => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

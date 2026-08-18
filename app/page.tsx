@@ -18,7 +18,7 @@ export default function HomePage() {
           <HeroSection onOpenWhatsApp={openWhatsApp} />
           <FleetCategoriesSection />
           <ServiceEcosystem onOpenWhatsApp={openWhatsApp} />
-          <AboutSection onOpenWhatsApp={openWhatsApp} />
+          <AboutSection />
           <ContactSection onOpenWhatsApp={openWhatsApp} />
         </div>
       </main>
