@@ -7,6 +7,8 @@ import { WhatsAppDrawer } from "./components/WhatsAppDrawer";
 import HeroSection from "./components/Hero";
 import FleetCategoriesSection from "./components/Fleetcategoriessection";
 import { useWhatsApp } from "@/hooks/useWhatsApp";
+import EkaStack from "./components/Ekastack";
+import Social from "./components/Social";
 
 export default function HomePage() {
   const { openWhatsApp, drawerProps } = useWhatsApp();
@@ -18,7 +20,9 @@ export default function HomePage() {
           <HeroSection onOpenWhatsApp={openWhatsApp} />
           <FleetCategoriesSection />
           <ServiceEcosystem onOpenWhatsApp={openWhatsApp} />
+          <EkaStack />
           <AboutSection />
+          <Social />
           <ContactSection onOpenWhatsApp={openWhatsApp} />
         </div>
       </main>

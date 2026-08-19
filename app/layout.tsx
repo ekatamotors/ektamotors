@@ -3,6 +3,10 @@ import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { WhatsAppProvider } from "@/context/WhatsAppContext";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Ekata Motors | Official EKA Commercial Electric Vehicles Nepal",
@@ -32,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className="antialiased selection:bg-[#0382DA] selection:text-white">
         <WhatsAppProvider>
           <Navbar />

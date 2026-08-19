@@ -161,7 +161,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         </div>
 
         {/* Showroom & Master Service Center Location Map Banner */}
-        <div className="bg-slate-100 rounded-2xl border border-slate-200 p-6 text-center space-y-3">
+        {/* <div className="bg-slate-100 rounded-2xl border border-slate-200 p-6 text-center space-y-3">
           <div className="text-sm font-bold text-[#041B5F]">
             Showroom & Master Service Center Location
           </div>
@@ -177,7 +177,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               Naxal, Kathmandu, Nepal
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
