@@ -154,7 +154,8 @@ export const Navbar = () => {
             href="/"
             className="flex items-center gap-2 focus:outline-hidden text-left group shrink-0 cursor-pointer py-1"
           >
-            <EkataMotorsLogo variant="dark" height={42} />
+            {/* <EkataMotorsLogo variant="dark" height={42} /> */}
+            <img src="./ekata-logo.png" alt="" className="w-36" />
           </Link>
 
           {/* Desktop Navigation Pill Bar matching user's requested style */}
