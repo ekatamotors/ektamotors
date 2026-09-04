@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ProductDetailView } from "./ProductDetailView";
 import { Vehicle } from "@/types";
 
-const WHATSAPP_NUMBER = "9779800000000"; // <-- replace with the real business number
+const WHATSAPP_NUMBER = "9851322342";
 
 interface ProductPageClientProps {
   vehicle: Vehicle;
@@ -18,9 +18,14 @@ export const ProductPageClient: React.FC<ProductPageClientProps> = ({
 
   const handleOpenWhatsApp = (message?: string) => {
     const text = encodeURIComponent(
-      message || `Hello! I'm interested in ${vehicle.name}.`,
+      message || `Hello Ekata Motors! I am interested in ${vehicle.name}.`,
     );
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (

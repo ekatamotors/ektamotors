@@ -1,21 +1,23 @@
 "use client";
+
 import React, { useState } from "react";
 import {
-  MessageCircle,
   ArrowLeft,
-  Play,
+  ArrowUpRight,
+  BatteryCharging,
+  Check,
+  Gauge,
+  MessageCircle,
   ShieldCheck,
-  Download,
+  Truck,
   Zap,
-  ChevronRight,
-  CheckCircle2,
 } from "lucide-react";
 import { Vehicle } from "@/types";
 
 interface ProductDetailViewProps {
   vehicle: Vehicle;
   onBack: () => void;
-  onOpenWhatsApp: (msg?: string) => void;
+  onOpenWhatsApp: (message?: string) => void;
 }
 
 export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
@@ -23,228 +25,248 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
   onBack,
   onOpenWhatsApp,
 }) => {
-  const [activeHighlightId, setActiveHighlightId] = useState<number>(1);
+  const [activeHighlightId, setActiveHighlightId] = useState(
+    vehicle.highlights?.[0]?.id ?? 0,
+  );
 
   const currentHighlight =
-    vehicle.highlights.find((h) => h.id === activeHighlightId) ||
-    vehicle.highlights[0];
+    vehicle.highlights?.find((item) => item.id === activeHighlightId) ??
+    vehicle.highlights?.[0];
+
+  const highlightImage =
+    currentHighlight?.image || vehicle.cockpitImage || vehicle.image;
+
+  const quickSpecs = [
+    {
+      label: "Range",
+      value: `${vehicle.keySpecs.rangeKm} km`,
+      icon: Zap,
+      color: "text-[#0382DA]",
+    },
+    {
+      label: "Battery",
+      value: `${vehicle.keySpecs.batteryCapacityKwh} kWh`,
+      icon: BatteryCharging,
+      color: "text-[#31BA58]",
+    },
+    {
+      label: "Charging",
+      value: `${vehicle.keySpecs.chargingTimeMins} mins`,
+      icon: BatteryCharging,
+      color: "text-[#0499AA]",
+    },
+    {
+      label: "Capacity",
+      value: vehicle.keySpecs.payloadCapacity,
+      icon: Truck,
+      color: "text-[#063891]",
+    },
+    {
+      label: "Motor Power",
+      value: `${vehicle.keySpecs.motorPowerKw} kW`,
+      icon: Gauge,
+      color: "text-[#0382DA]",
+    },
+    {
+      label: "Gradeability",
+      value: `${vehicle.keySpecs.gradeabilityPercent}%`,
+      icon: ShieldCheck,
+      color: "text-[#31BA58]",
+    },
+  ];
+
+  const inquire = () =>
+    onOpenWhatsApp(
+      `Hello Ekata Motors! I would like more information and pricing for ${vehicle.name}.`,
+    );
 
   return (
-    <div className="bg-[#F5F8FB] text-white min-h-screen py-10 px-4 sm:px-6 lg:px-8 space-y-16 selection:bg-[#0382DA] selection:text-white font-sans">
-      <div className="max-w-7xl mx-auto space-y-12">
-        {/* Back Button */}
+    <main className="min-h-screen bg-white text-slate-950">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-[-260px] h-[520px] w-[760px] -translate-x-1/2 rounded-full bg-slate-200/70 blur-3xl" />
+        <div className="absolute right-[-180px] top-[35%] h-[420px] w-[420px] rounded-full bg-blue-500/[0.05] blur-3xl" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:py-12">
         <button
+          type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white bg-slate-900/80 hover:bg-slate-800 border border-slate-800 px-4 py-2 rounded-full transition-all cursor-pointer"
+          className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm transition hover:border-[#0382DA]/40 hover:text-[#0382DA]"
         >
-          <ArrowLeft className="w-4 h-4 text-[#0382DA]" />
-          <span>Back to All Vehicles</span>
+          <ArrowLeft className="h-4 w-4" />
+          All vehicles
         </button>
 
-        {/* Hero Section Banner matching Image 1 */}
-        <div className="text-center space-y-4 max-w-4xl mx-auto pt-2">
-          <div className="inline-flex items-center gap-2 bg-[#0382DA]/20 border border-[#0382DA]/40 text-[#0382DA] text-xs font-black uppercase px-3 py-1 rounded-full tracking-widest">
-            <span>EKA Mobility Commercial Lineup</span>
+        <section className="mt-8 grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#0382DA]">
+              <Truck className="h-3.5 w-3.5" />
+              {vehicle.categoryName}
+            </div>
+
+            <p className="mt-6 text-sm font-bold uppercase tracking-widest text-[#31BA58]">
+              {vehicle.brandName}
+            </p>
+            <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-[#041B5F] sm:text-5xl lg:text-6xl">
+              {vehicle.name}
+            </h1>
+            <p className="mt-4 text-xl font-semibold leading-snug text-slate-700">
+              {vehicle.tagline}
+            </p>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
+              {vehicle.shortDescription || vehicle.fullDescription}
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={inquire}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#20bd5a]"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Inquire on WhatsApp
+              </button>
+              <a
+                href="#specifications"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-bold text-[#041B5F] transition hover:bg-slate-50"
+              >
+                View specifications
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-[#041B5F] tracking-tight uppercase">
-            {vehicle.name}
-          </h1>
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-xl shadow-slate-200/60">
+            <img
+              src={vehicle.image}
+              alt={vehicle.name}
+              referrerPolicy="no-referrer"
+              className="aspect-[4/3] h-full w-full object-cover transition duration-500 hover:scale-[1.02]"
+            />
+          </div>
+        </section>
 
-          <p className="text-lg sm:text-2xl font-extrabold  text-[#041B5F]">
-            {vehicle.tagline}
-          </p>
+        <section className="mt-14 grid grid-cols-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:grid-cols-3 lg:grid-cols-6">
+          {quickSpecs.map((stat) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={stat.label}
+                className="border-b border-r border-slate-200 p-5 sm:p-6"
+              >
+                <Icon className={`h-5 w-5 ${stat.color}`} />
+                <p className="mt-3 text-xs font-medium text-slate-500">
+                  {stat.label}
+                </p>
+                <p className="mt-1 text-sm font-extrabold text-[#041B5F]">
+                  {stat.value}
+                </p>
+              </div>
+            );
+          })}
+        </section>
 
-          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed max-w-3xl mx-auto ">
-            {vehicle.shortDescription || vehicle.fullDescription}
-          </p>
-
-          {/* 5 Key Hero Stats Bar */}
-          {vehicle.heroStats && vehicle.heroStats.length > 0 && (
-            <div className="pt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 border-t border-slate-800/80 mt-8">
-              {vehicle.heroStats.map((stat, idx) => (
-                <div key={idx} className="space-y-1 text-center">
-                  <div className="text-xs font-semibold text-[#041B5F]">
-                    {stat.label}
-                  </div>
-                  <div className="text-lg sm:text-xl font-black text-slate-600 tracking-tight">
-                    {stat.value}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Main Vehicle Hero Image Banner */}
-        <div className="rounded-3xl overflow-hidden  shadow-2xl bg-slate-900/40 relative group max-w-6xl mx-auto">
-          <img
-            src={vehicle.image}
-            alt={vehicle.name}
-            referrerPolicy="no-referrer"
-            className="w-full h-[360px] sm:h-[500px] object-cover object-center transform group-hover:scale-102 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060A12] via-transparent to-transparent opacity-80" />
-        </div>
-
-        {/* Product Highlights Section matching Image 2 */}
         {vehicle.highlights && vehicle.highlights.length > 0 && (
-          <div className="space-y-8 pt-6 max-w-6xl mx-auto">
-            <div className="flex items-center gap-2 text-2xl sm:text-3xl font-black text-[#041B5F]">
-              <span className="text-[#041B5F] font-mono text-xl">↳</span>
-              <h2>Product Highlights</h2>
-            </div>
+          <section className="mt-20">
+            <p className="text-sm font-bold uppercase tracking-wider text-[#0382DA]">
+              Vehicle highlights
+            </p>
+            <h2 className="mt-2 text-3xl font-extrabold text-[#041B5F] sm:text-4xl">
+              Designed for performance and comfort
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+              Select a feature to learn what makes {vehicle.name} practical for
+              Nepal.
+            </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* Left Column Tabs List */}
-              <div className="lg:col-span-5 space-y-3">
+            <div className="mt-8 grid items-start gap-8 lg:grid-cols-12">
+              <div className="space-y-3 lg:col-span-5">
                 {vehicle.highlights.map((item) => {
                   const isActive = activeHighlightId === item.id;
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={item.id}
                       onClick={() => setActiveHighlightId(item.id)}
-                      className={`p-5 rounded-2xl border transition-all cursor-pointer ${
+                      className={`w-full rounded-2xl border p-5 text-left transition ${
                         isActive
-                          ? "bg-[#041B5F] shadow-lg shadow-blue-950/40"
-                          : "bg-[#041B5F] border-slate-800/80 hover:bg-[#031548] hover:border-slate-700"
+                          ? "border-[#0382DA] bg-blue-50 shadow-sm"
+                          : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <span
-                          className={`text-sm font-bold font-mono ${isActive ? "text-[#0382DA]" : "text-slate-500"}`}
+                          className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${isActive ? "bg-[#0382DA] text-white" : "bg-slate-100 text-slate-500"}`}
                         >
-                          {item.id}.
+                          {item.id}
                         </span>
-                        <h3
-                          className={`text-lg font-bold ${isActive ? "text-[#0382DA]" : "text-white"}`}
-                        >
+                        <h3 className="font-bold text-[#041B5F]">
                           {item.title}
                         </h3>
                       </div>
-
-                      {isActive && (
-                        <ul className="mt-4 space-y-2 text-xs text-slate-300 pl-7 list-disc">
-                          {/* @ts-ignore */}
-                          {item.bullets.map((bullet, bIdx) => (
-                            <li key={bIdx} className="leading-relaxed">
-                              {bullet}
+                      {isActive && item.bullets && (
+                        <ul className="mt-4 space-y-2 pl-10">
+                          {item.bullets.map((bullet, index) => (
+                            <li
+                              key={index}
+                              className="flex gap-2 text-sm leading-6 text-slate-600"
+                            >
+                              <Check className="mt-1 h-4 w-4 shrink-0 text-[#31BA58]" />
+                              <span>{bullet}</span>
                             </li>
                           ))}
                         </ul>
                       )}
-                    </div>
+                    </button>
                   );
                 })}
               </div>
 
-              {/* Right Column Image Preview */}
-              <div className="lg:col-span-7 bg-slate-950 rounded-2xl  overflow-hidden shadow-2xl aspect-4/3 relative">
+              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-lg lg:col-span-7">
                 <img
-                  src={vehicle.cockpitImage}
-                  alt={currentHighlight?.title || "Highlight view"}
+                  key={highlightImage}
+                  src={vehicle.cockpitImage || highlightImage}
+                  alt={currentHighlight?.title || vehicle.name}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="aspect-[4/3] h-full w-full object-cover"
                 />
-                {/* <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 to-transparent p-6">
-                  <span className="text-xs font-bold text-[#0382DA] uppercase tracking-wider block">
-                    {currentHighlight?.title}
-                  </span>
-                  <p className="text-sm font-semibold text-white">
-                    Detailed Engineering View & Cabin Architecture
-                  </p>
-                </div> */}
               </div>
             </div>
-          </div>
+          </section>
         )}
 
-        {/* Detailed Specifications Section matching Image 3 */}
         {vehicle.detailedSpecsTable &&
           vehicle.detailedSpecsTable.length > 0 && (
-            <div className="space-y-8 pt-8 max-w-6xl mx-auto">
-              <div className="flex items-center gap-2 text-2xl sm:text-3xl font-black text-[#041B5F]">
-                <span className="text-[#041B5F] font-mono text-xl">↳</span>
-                <h2>Detailed Specifications</h2>
-              </div>
+            <section id="specifications" className="mt-20 scroll-mt-24">
+              <p className="text-sm font-bold uppercase tracking-wider text-[#0382DA]">
+                Technical information
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold text-[#041B5F] sm:text-4xl">
+                Detailed specifications
+              </h2>
 
-              <div className="bg-[#0B1120] rounded-2xl border border-slate-800/80 p-6 sm:p-8 shadow-2xl">
-                <div className="divide-y divide-[#0382DA]/20">
-                  {vehicle.detailedSpecsTable.map((row, idx) => (
-                    <div
-                      key={idx}
-                      className="py-3.5 sm:py-4 grid grid-cols-1 md:grid-cols-12 gap-2 text-xs sm:text-sm"
-                    >
-                      <div className="md:col-span-5 font-bold text-white uppercase tracking-wider">
-                        {row.label}
-                      </div>
-                      <div className="md:col-span-7 text-slate-300 font-medium">
-                        {row.value}
-                      </div>
+              <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                {vehicle.detailedSpecsTable.map((row, index) => (
+                  <div
+                    key={`${row.label}-${index}`}
+                    className={`grid gap-1 px-5 py-4 sm:grid-cols-12 sm:gap-6 sm:px-7 ${
+                      index !== vehicle.detailedSpecsTable.length - 1
+                        ? "border-b border-slate-200"
+                        : ""
+                    } ${index % 2 === 1 ? "bg-slate-50/80" : "bg-white"}`}
+                  >
+                    <div className="text-xs font-bold uppercase tracking-wide text-slate-500 sm:col-span-5">
+                      {row.label}
                     </div>
-                  ))}
-                </div>
+                    <div className="whitespace-pre-line text-sm font-semibold leading-6 text-[#041B5F] sm:col-span-7">
+                      {row.value}
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
+            </section>
           )}
-
-        {/* Video Walkthrough Section */}
-        {/* {vehicle.video && (
-          <div className="space-y-6 pt-6 max-w-6xl mx-auto">
-            <div className="flex items-center justify-between">
-              <div className="space-y-1">
-                <h3 className="text-xl sm:text-2xl font-black text-white">
-                  Video Demonstration & Operational Route Walkthrough
-                </h3>
-                <p className="text-xs text-slate-400">
-                  {vehicle.video.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="aspect-16/9 bg-black rounded-2xl overflow-hidden border border-slate-800 shadow-2xl relative">
-              <iframe
-                className="w-full h-full"
-                src={`https://www.youtube-nocookie.com/embed/${vehicle.video.youtubeId}?autoplay=0&rel=0`}
-                title={vehicle.video.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        )} */}
-
-        {/* Fleet Inquiry & WhatsApp Banner */}
-        <div className="bg-gradient-to-r from-[#0B1324] via-[#041B5F] to-[#0382DA]/30 rounded-3xl p-8 sm:p-12  shadow-2xl max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-3 max-w-xl">
-            <div className="inline-flex items-center gap-2 bg-[#31BA58]/20 border border-[#31BA58]/40 text-[#31BA58] text-xs font-bold uppercase px-3 py-1 rounded-full">
-              <span>Direct Fleet Assistance</span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-black text-white">
-              Interested in {vehicle.name} for Your Fleet?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-              Connect directly with our commercial vehicle engineering team in
-              Naxal, Kathmandu for vehicle specifications, pricing, and local
-              support.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto">
-            <button
-              onClick={() =>
-                onOpenWhatsApp(
-                  `Hello Ekata Motors! I would like more information and pricing for ${vehicle.name}.`,
-                )
-              }
-              className="w-full sm:w-auto bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold py-3.5 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer"
-            >
-              <MessageCircle className="w-4 h-4 fill-current" />
-              <span>Inquire on WhatsApp</span>
-            </button>
-          </div>
-        </div>
       </div>
-    </div>
+    </main>
   );
 };

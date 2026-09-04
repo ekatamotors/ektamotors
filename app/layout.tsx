@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "./components/Navbar";
-import { Footer } from "./components/Footer";
 import { WhatsAppProvider } from "@/context/WhatsAppContext";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -40,9 +40,11 @@ export default function RootLayout({
       <body className="antialiased selection:bg-[#0382DA] selection:text-white">
         {/* <WhatsAppProvider>
           <Navbar /> */}
+        <Navbar />
         {children}
         {/* <Footer />
         </WhatsAppProvider> */}
+        <Footer />
       </body>
     </html>
   );
