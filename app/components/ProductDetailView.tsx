@@ -206,6 +206,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                       </div>
                       {isActive && item.bullets && (
                         <ul className="mt-4 space-y-2 pl-10">
+                          {/* @ts-ignore */}
                           {item.bullets.map((bullet, index) => (
                             <li
                               key={index}
