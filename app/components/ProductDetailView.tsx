@@ -267,6 +267,118 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </div>
             </section>
           )}
+
+        {vehicle.chargingSpecifications &&
+          vehicle.chargingSpecifications.length > 0 && (
+            <section id="charging" className="mt-20 scroll-mt-24">
+              <p className="text-sm font-bold uppercase tracking-wider text-[#0382DA]">
+                Charging information
+              </p>
+
+              <h2 className="mt-2 text-3xl font-extrabold text-[#041B5F] sm:text-4xl">
+                Charger specifications
+              </h2>
+
+              <p className="mt-3 max-w-2xl leading-7 text-slate-600">
+                Choose between convenient home charging and faster DC charging.
+              </p>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-2">
+                {vehicle.chargingSpecifications.map((option, index) => (
+                  <div
+                    key={option.title}
+                    className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
+                  >
+                    <div className="bg-[#041B5F] px-6 py-5 text-white">
+                      <p className="text-xs font-bold uppercase tracking-wider text-[#31BA58]">
+                        Charging option {index + 1}
+                      </p>
+
+                      <h3 className="mt-2 text-xl font-extrabold">
+                        {option.title}
+                      </h3>
+                    </div>
+
+                    <div className="divide-y divide-slate-200">
+                      <div className="grid gap-2 px-6 py-5 sm:grid-cols-2">
+                        <span className="text-sm font-semibold text-slate-500">
+                          Charging socket
+                        </span>
+
+                        <span className="font-bold text-[#041B5F]">
+                          {option.socket}
+                        </span>
+                      </div>
+
+                      <div className="grid gap-2 px-6 py-5 sm:grid-cols-2">
+                        <span className="text-sm font-semibold text-slate-500">
+                          Charging time
+                        </span>
+
+                        <span className="font-bold text-[#041B5F]">
+                          {option.chargingTime}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <p className="mt-4 text-sm leading-6 text-slate-500">
+                Charging time may vary depending on the charger, electrical
+                supply, battery temperature and state of charge.
+              </p>
+            </section>
+          )}
+
+        {vehicle.specificationSections &&
+          vehicle.specificationSections.length > 0 && (
+            <section className="mt-20 space-y-14">
+              {vehicle.specificationSections.map((section) => (
+                <div
+                  key={`${vehicle.id}-${section.title}`}
+                  className="scroll-mt-24"
+                >
+                  <p className="text-sm font-bold uppercase tracking-wider text-[#0382DA]">
+                    Additional information
+                  </p>
+
+                  <h2 className="mt-2 text-3xl font-extrabold text-[#041B5F] sm:text-4xl">
+                    {section.title}
+                  </h2>
+
+                  <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                    <dl>
+                      {section.specifications.map((specification, index) => (
+                        <div
+                          key={`${specification.label}-${index}`}
+                          className={`grid gap-2 px-5 py-4 sm:grid-cols-12 sm:gap-6 sm:px-7 ${
+                            index !== section.specifications.length - 1
+                              ? "border-b border-slate-200"
+                              : ""
+                          } ${index % 2 === 1 ? "bg-slate-50/80" : "bg-white"}`}
+                        >
+                          <dt className="text-sm font-bold text-slate-600 sm:col-span-5">
+                            {specification.label}
+                          </dt>
+
+                          <dd className="text-sm font-semibold leading-6 text-[#041B5F] sm:col-span-7">
+                            {specification.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                </div>
+              ))}
+
+              <p className="text-sm leading-6 text-slate-500">
+                Specifications and charging time may vary depending on the
+                vehicle configuration, electrical supply, operating conditions
+                and remaining battery level.
+              </p>
+            </section>
+          )}
       </div>
     </main>
   );

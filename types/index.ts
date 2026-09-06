@@ -56,6 +56,14 @@ export interface Vehicle {
   // Structured Specification tabs
   keyMetrics: KeyMetric[];
   specifications: SpecCategory[];
+  chargingSpecifications?: any[];
+  specificationSections?: {
+    title: string;
+    specifications: {
+      label: string;
+      value: string;
+    }[];
+  }[];
   applications: ApplicationCase[];
   colors: ColorOption[];
   detailedSpecsTable: any[];

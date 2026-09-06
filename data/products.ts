@@ -1175,11 +1175,63 @@ export const PRODUCTS_DATA: Vehicle[] = [
     keySpecs: {
       rangeKm: 180,
       batteryCapacityKwh: 32,
-      chargingTimeMins: null,
+      chargingTimeMins: 240,
       payloadCapacity: "1,500 kg Payload",
       motorPowerKw: 60,
       gradeabilityPercent: 18,
     },
+    specificationSections: [
+      {
+        title: "Container Specifications",
+        specifications: [
+          {
+            label: "Body Type",
+            value: "Sturdy MS/AL Body",
+          },
+          {
+            label: "External Dimensions",
+            value: "2750 × 1750 × 1956 mm",
+          },
+          {
+            label: "Internal Dimensions",
+            value: "2687 × 1692 × 1855 mm",
+          },
+          {
+            label: "Volume",
+            value: "8.44 m³ / 300 ft³",
+          },
+          {
+            label: "Branding Space",
+            value: "Available area: 13.01 ft²",
+          },
+        ],
+      },
+      {
+        title: "Charger Specifications",
+        specifications: [
+          {
+            label: "Charging Mode",
+            value: "Single Phase AC Charging",
+          },
+          {
+            label: "Input Voltage",
+            value: "240 V ±10% and 50 Hz ±5%",
+          },
+          {
+            label: "Installation",
+            value: "Wall-mounted",
+          },
+          {
+            label: "Charging Time",
+            value: "4 hours",
+          },
+          {
+            label: "Maximum Input Current",
+            value: "32 A",
+          },
+        ],
+      },
+    ],
     warrantyYears: 3,
     warrantyKm: 150000,
     economics: {
@@ -1461,11 +1513,23 @@ export const PRODUCTS_DATA: Vehicle[] = [
     keySpecs: {
       rangeKm: 175,
       batteryCapacityKwh: 16.1,
-      chargingTimeMins: 195,
+      chargingTimeMins: 120,
       payloadCapacity: "D + 6 Seats",
       motorPowerKw: 10,
       gradeabilityPercent: 21,
     },
+    chargingSpecifications: [
+      {
+        title: "Single Phase AC Charging / Home Charging",
+        socket: "3 Pin 16 Amp",
+        chargingTime: "5 hours",
+      },
+      {
+        title: "DC Fast Charging",
+        socket: "Type 6 DC",
+        chargingTime: "2 hours",
+      },
+    ],
     warrantyYears: 3,
     warrantyKm: 100000,
     economics: {
@@ -1606,6 +1670,18 @@ export const PRODUCTS_DATA: Vehicle[] = [
       motorPowerKw: 10,
       gradeabilityPercent: 21,
     },
+    chargingSpecifications: [
+      {
+        title: "Single Phase AC Charging / Home Charging",
+        socket: "3 Pin 16 Amp",
+        chargingTime: "3.5 hours",
+      },
+      {
+        title: "DC Fast Charging",
+        socket: "Type 6 DC",
+        chargingTime: "2 hours",
+      },
+    ],
     warrantyYears: 3,
     warrantyKm: 100000,
     economics: {
