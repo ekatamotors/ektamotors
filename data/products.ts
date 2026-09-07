@@ -507,6 +507,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-lf",
+    specificationPdf: "/pdf/buses/9M.pdf",
     name: "EKA LF",
     brandName: "EKA Mobility",
     category: "BUS",
