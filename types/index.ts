@@ -64,6 +64,7 @@ export interface Vehicle {
       value: string;
     }[];
   }[];
+  specificationPdf?: string;
   applications: ApplicationCase[];
   colors: ColorOption[];
   detailedSpecsTable: any[];
