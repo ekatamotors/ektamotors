@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   BatteryCharging,
   Check,
+  FileDown,
   Gauge,
   MessageCircle,
   ShieldCheck,
@@ -117,7 +118,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               {vehicle.shortDescription || vehicle.fullDescription}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <button
                 type="button"
                 onClick={inquire}
@@ -126,6 +127,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 <MessageCircle className="h-5 w-5" />
                 Inquire on WhatsApp
               </button>
+
               <a
                 href="#specifications"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-bold text-[#041B5F] transition hover:bg-slate-50"
@@ -133,6 +135,19 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
                 View specifications
                 <ArrowUpRight className="h-4 w-4" />
               </a>
+
+              {vehicle.specificationPdf && (
+                <a
+                  href={vehicle.specificationPdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Preview and download ${vehicle.name} specifications`}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#0382DA] bg-blue-50 px-6 py-3.5 text-sm font-bold text-[#0382DA] transition hover:bg-[#0382DA] hover:text-white"
+                >
+                  <FileDown className="h-5 w-5" />
+                  Download Specs
+                </a>
+              )}
             </div>
           </div>
 
@@ -379,6 +394,20 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </p>
             </section>
           )}
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          {vehicle.specificationPdf && (
+            <a
+              href={vehicle.specificationPdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Preview and download ${vehicle.name} specifications`}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#0382DA] bg-blue-50 px-6 py-3.5 text-sm font-bold text-[#0382DA] transition hover:bg-[#0382DA] hover:text-white"
+            >
+              <FileDown className="h-5 w-5" />
+              Download Specs
+            </a>
+          )}
+        </div>
       </div>
     </main>
   );

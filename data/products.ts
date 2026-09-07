@@ -27,6 +27,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   // ===================== TRUCKS =====================
   {
     id: "eka-55t",
+    specificationPdf: "/pdf/trucks/55T.pdf",
     name: "EKA 55T",
     brandName: "EKA Mobility",
     category: "TRUCK",
@@ -209,6 +210,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-7t",
+    specificationPdf: "/pdf/trucks/7T.pdf",
     name: "EKA 7T",
     brandName: "EKA Mobility",
     category: "TRUCK",
@@ -353,6 +355,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   // ===================== BUSES =====================
   {
     id: "eka-coach",
+    specificationPdf: "/pdf/buses/coach.pdf",
     name: "EKA Coach",
     brandName: "EKA Mobility",
     category: "BUS",
@@ -653,6 +656,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-12m",
+    specificationPdf: "/pdf/buses/12M.pdf",
     name: "EKA 12M",
     brandName: "EKA Mobility",
     category: "BUS",
@@ -796,6 +800,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-9m",
+    specificationPdf: "/pdf/buses/9M.pdf",
     name: "EKA 9M",
     brandName: "EKA Mobility",
     category: "BUS",
@@ -940,6 +945,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-7m",
+    specificationPdf: "/pdf/buses/7M.pdf",
     name: "EKA 7M",
     brandName: "EKA Mobility",
     category: "BUS",
@@ -1070,6 +1076,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   // ===================== SCVs (Small Commercial Vehicles) =====================
   {
     id: "eka-1-5t",
+    specificationPdf: "/pdf/scvs/1.5t.pdf",
     name: "EKA 1.5T",
     brandName: "EKA Mobility",
     category: "SCV",
@@ -1258,6 +1265,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-3w-cargo",
+    specificationPdf: "/pdf/scvs/3-cargo.pdf",
     name: "EKA 3W Cargo",
     brandName: "EKA Mobility",
     category: "SCV",
@@ -1400,6 +1408,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-6s",
+    specificationPdf: "/pdf/scvs/6s.pdf",
     name: "EKA 6S",
     brandName: "EKA Mobility",
     category: "SCV",
@@ -1556,6 +1565,7 @@ export const PRODUCTS_DATA: Vehicle[] = [
   },
   {
     id: "eka-3s",
+    specificationPdf: "/pdf/scvs/3s.pdf",
     name: "EKA 3S",
     brandName: "EKA Mobility",
     category: "SCV",
