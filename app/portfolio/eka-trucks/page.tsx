@@ -4,7 +4,7 @@ export default function Page() {
     <VehicleListingPage
       title="Electric trucks"
       description="Heavy-duty electric trucks built for commercial cargo movement and demanding routes."
-      ids={["eka-55t", "eka-7t"]}
+      ids={["eka-55t"]}
     />
   );
 }
