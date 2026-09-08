@@ -15,7 +15,7 @@ export default function Footer() {
           />
 
           <p className="mt-3 text-sm font-bold uppercase tracking-wider text-[#31BA58]">
-            Authorized Distributor for Nepal
+            Authorised Dealers for EKA Mobility Products in Nepal
           </p>
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-blue-100">
