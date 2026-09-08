@@ -10,10 +10,7 @@ const vehicleMenus = [
   {
     label: "Trucks",
     categoryUrl: "/portfolio/eka-trucks",
-    vehicles: [
-      { label: "EKA 55T", href: "/portfolio/eka-55t" },
-      { label: "EKA 7T", href: "/portfolio/eka-7t" },
-    ],
+    vehicles: [{ label: "EKA 55T", href: "/portfolio/eka-55t" }],
   },
   {
     label: "Buses",
