@@ -98,6 +98,7 @@ export default function ContactPage() {
     <>
       {/* Local business structured data */}
       <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(localBusinessJsonLd).replace(/</g, "\\u003c"),
         }}
