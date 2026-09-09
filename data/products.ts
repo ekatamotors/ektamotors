@@ -1720,10 +1720,11 @@ export const PRODUCTS_DATA: Vehicle[] = [
 
 export const COMPANY_INFO = {
   name: "Ekata Motors Pvt. Ltd.",
+  address:
+    "P89J+CXX, Bishal Nagar Marg, Kathmandu, Bagmati Province 44600, Nepal",
   descriptor: "Official & Exclusive Distributor of EKA Mobility in Nepal",
   tagline: "Moving Nepal Forward.",
   categoryDescriptor: "Sustainable EV Mobility",
-  address: "Ekata Motors Hub, Naxal, Kathmandu, Nepal",
   phonePrimary: "9851322342",
   phoneMobile: "9851322342",
   whatsappNumber: "9851322342",
