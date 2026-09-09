@@ -5,6 +5,7 @@ export default function AboutPage() {
   return (
     <>
       <section className="bg-[#F5F8FB]">
+        <h1>About Page</h1>
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 lg:grid-cols-1">
           <div>
             <p className="text-sm font-bold uppercase tracking-wider text-[#0382DA]">
