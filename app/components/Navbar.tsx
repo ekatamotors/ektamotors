@@ -30,6 +30,7 @@ const vehicleMenus = [
       { label: "EKA 1.5T", href: "/portfolio/eka-1-5t" },
       { label: "EKA 3W Cargo", href: "/portfolio/eka-3w-cargo" },
       { label: "EKA 6S", href: "/portfolio/eka-6s" },
+      { label: "EKA 9S", href: "/portfolio/eka-9s" },
       { label: "EKA 3S", href: "/portfolio/eka-3s" },
     ],
   },
